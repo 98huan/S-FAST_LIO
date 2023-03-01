@@ -695,21 +695,21 @@ int main(int argc, char** argv)
     /* 2. pcd save will largely influence the real-time performences **/
     if (pcl_wait_save->size() > 0 && pcd_save_en)
     {
-        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
-        for (size_t i = 1; i <= pcd_index; i++)
-        {
-            pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_temp(new pcl::PointCloud<pcl::PointXYZ>);
-            string all_points_dir(string(string(ROOT_DIR) + "PCD/scans_") + to_string(i) + string(".pcd"));
-            pcl::PCDReader reader;
-            reader.read(all_points_dir,*cloud_temp);
-            *cloud = *cloud + *cloud_temp;
-        }
+        // pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+        // for (size_t i = 1; i <= pcd_index; i++)
+        // {
+        //     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_temp(new pcl::PointCloud<pcl::PointXYZ>);
+        //     string all_points_dir(string(string(ROOT_DIR) + "PCD/scans_") + to_string(i) + string(".pcd"));
+        //     pcl::PCDReader reader;
+        //     reader.read(all_points_dir,*cloud_temp);
+        //     *cloud = *cloud + *cloud_temp;
+        // }
     
         string file_name = string("scans.pcd");
         string all_points_dir(string(string(ROOT_DIR) + "PCD/") + file_name);
         pcl::PCDWriter pcd_writer;
         cout << "current scan saved to /PCD/" << file_name<<endl;
-        pcd_writer.writeBinary(all_points_dir, *cloud);
+        pcd_writer.writeBinary(all_points_dir, *pcl_wait_save);
     }
 
     return 0;
