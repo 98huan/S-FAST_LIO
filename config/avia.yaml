@@ -8,7 +8,7 @@ common:
 preprocess:
     lidar_type: 1                # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR, 
     scan_line: 4    # mid360
-    blind: 1.5      # mid360
+    blind: 4      # mid360
 
 mapping:
     acc_cov: 0.1
@@ -16,7 +16,7 @@ mapping:
     b_acc_cov: 0.0001
     b_gyr_cov: 0.0001
     fov_degree:    360      # mid360
-    det_range:     100.0    # mid360
+    det_range:     70.0    # mid360
     extrinsic_est_en:  false      # true: enable the online estimation of IMU-LiDAR extrinsic
     extrinsic_T: [ -0.011, -0.02329, 0.04412 ]  # mid-360 imu到lidar:x=0.011,y=0.02329,z=-0.04412，fast_lio中平移矩阵是lidar到IMU
     extrinsic_R: [ 1, 0, 0,
